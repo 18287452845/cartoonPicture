@@ -13,8 +13,11 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.637.0",
     "@aws-sdk/s3-request-presigner": "^3.637.0",
+    "ali-oss": "^6.23.0",
+    "cos-nodejs-sdk-v5": "^2.15.4",
     "lucide-react": "^0.447.0",
     "next": "^14.2.18",
+    "qiniu": "^7.14.0",
     "qrcode.react": "^4.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

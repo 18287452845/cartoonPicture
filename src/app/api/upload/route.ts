@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { uploadToR2, generateUniqueKey } from '@/lib/r2-client'
+import { uploadFile, generateUniqueKey } from '@/lib/storage'
 import { base64ToBuffer, getFileExtensionFromBase64, getContentTypeFromExtension } from '@/lib/utils'
 import type { UploadResponse } from '@/types'
 
@@ -22,8 +22,10 @@ export async function POST(request: NextRequest) {
     // 生成唯一的文件名
     const key = generateUniqueKey('originals', extension)
 
-    // 上传到 R2
-    const url = await uploadToR2(buffer, key, contentType)
+    // 上传到配置的存储服务
+    const url = await uploadFile(buffer, key, contentType)
+    
+    console.log('图片上传成功:', { key, url })
 
     return NextResponse.json({
       success: true,

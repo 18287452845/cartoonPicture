@@ -2,12 +2,22 @@
 
 基于 Next.js 14 的 Web 应用，支持上传照片或拍照，并通过阿里云百炼 AI 生成卡通风格图片。
 
+## 📚 快速导航
+
+- **[配置指南](./CONFIG.md)** - 环境变量配置说明
+- **[存储服务配置](./STORAGE_CONFIG.md)** - 多存储服务配置指南（R2/阿里云OSS/七牛云/腾讯云COS）
+- **[部署文档](./DEPLOYMENT.md)** - 详细的生产环境部署指南
+
 ## 🚀 技术栈
 
 - **框架**: Next.js 14+ (App Router)
 - **语言**: TypeScript
 - **样式**: Tailwind CSS
-- **存储**: Cloudflare R2 (S3 兼容)
+- **存储**: 支持多种存储服务
+  - Cloudflare R2 (全球 CDN)
+  - 阿里云 OSS (国内加速)
+  - 七牛云 (国内 CDN)
+  - 腾讯云 COS (国内加速)
 - **AI 服务**: 阿里云百炼/通义万相
 - **工具库**: 
   - `react-webcam` - 摄像头拍照
@@ -43,6 +53,8 @@ photo-toon-mvp/
 
 ## 🔧 环境配置
 
+> 📖 **详细配置说明请查看 [CONFIG.md](./CONFIG.md)**
+
 ### 1. 复制环境变量文件
 
 ```bash
@@ -51,7 +63,7 @@ cp .env.example .env.local
 
 ### 2. 配置环境变量
 
-编辑 `.env.local` 并填入你的配置：
+编辑 `.env.local` 并填入你的配置（**已预配置，可直接使用**）：
 
 #### Cloudflare R2 配置
 
@@ -207,6 +219,7 @@ npm start
    - 建议使用 Vercel/Netlify 等平台
    - 配置环境变量
    - 根据需要调整超时设置
+   - 📖 **详细部署步骤请查看 [DEPLOYMENT.md](./DEPLOYMENT.md)**
 
 ## 🤝 贡献
 

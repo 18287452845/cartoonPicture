@@ -25,9 +25,13 @@ export interface AliImageGenerationRequest {
 
 export interface AliImageGenerationResponse {
   output?: {
+    task_status?: string
+    task_id?: string
     results?: Array<{
       url: string
     }>
+    error_message?: string
+    error_code?: number
   }
   request_id?: string
   message?: string
