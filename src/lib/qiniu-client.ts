@@ -4,10 +4,10 @@
 
 import * as qiniu from 'qiniu'
 
-let qiniuConfig: qiniu.conf.Config | null = null
-let mac: qiniu.auth.digest.Mac | null = null
+let qiniuConfig: any | null = null
+let mac: any | null = null
 
-function getQiniuConfig(): { config: qiniu.conf.Config; mac: qiniu.auth.digest.Mac } {
+function getQiniuConfig(): { config: any; mac: any } {
   if (!qiniuConfig || !mac) {
     const accessKey = process.env.QINIU_ACCESS_KEY!
     const secretKey = process.env.QINIU_SECRET_KEY!
@@ -45,7 +45,7 @@ export async function uploadToQiniu(
   const putExtra = new qiniu.form_up.PutExtra()
   
   return new Promise((resolve, reject) => {
-    formUploader.put(uploadToken, key, buffer, putExtra, (respErr, respBody, respInfo) => {
+    formUploader.put(uploadToken, key, buffer, putExtra, (respErr: any, respBody: any, respInfo: any) => {
       if (respErr) {
         console.error('七牛云上传失败:', respErr)
         reject(new Error(`七牛云上传失败: ${respErr.message}`))

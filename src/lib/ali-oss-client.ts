@@ -4,9 +4,9 @@
 
 import OSS from 'ali-oss'
 
-let ossClient: OSS | null = null
+let ossClient: any | null = null
 
-function getOSSClient(): OSS {
+function getOSSClient(): any {
   if (!ossClient) {
     const region = process.env.ALI_OSS_REGION || 'oss-cn-hangzhou'
     const accessKeyId = process.env.ALI_OSS_ACCESS_KEY_ID!

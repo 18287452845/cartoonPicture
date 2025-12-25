@@ -31,7 +31,7 @@ async function imageUrlToBase64(imageUrl: string): Promise<string> {
   }
 }
 
-export async function generateCartoonImage(imageInput: string): Promise<string> {
+export async function generateCartoonImage(imageInput: string, styleIndex: number = 0): Promise<string> {
   // 支持两种输入格式：URL 或 base64 data URL
   // 根据阿里云文档，支持：
   // 1. 公网可访问的 HTTP/HTTPS 地址
@@ -89,7 +89,7 @@ export async function generateCartoonImage(imageInput: string): Promise<string> 
     model: ALI_MODEL,
     input: {
       image_url: finalImageInput,
-      style_index: 0, // 卡通风格索引，可以根据需要调整
+      style_index: styleIndex,
     },
     parameters: {
       style: '<auto>', // 自动选择风格

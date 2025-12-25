@@ -32,7 +32,7 @@ export default function DataUploadPanel({ onUpload, onCameraRequest, onError }: 
       const base64 = await fileToBase64(file)
       onUpload(base64)
     } catch (error) {
-      onError('DATA READ ERROR')
+      onError('数据读取错误')
     }
   }
 
@@ -56,7 +56,7 @@ export default function DataUploadPanel({ onUpload, onCameraRequest, onError }: 
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-6xl mx-auto">
       {/* Tabs */}
       <div className="flex justify-center mb-8 gap-4">
         <button
@@ -67,13 +67,13 @@ export default function DataUploadPanel({ onUpload, onCameraRequest, onError }: 
               : 'border-cyan-900/50 text-cyan-700 hover:border-cyan-700'
           } transition-all`}
         >
-          DATA UPLOAD
+          数据上传
         </button>
         <button
           onClick={onCameraRequest}
           className="px-8 py-2 font-orbitron tracking-wider border border-cyan-900/50 text-cyan-700 hover:border-cyan-400 hover:text-cyan-300 transition-all"
         >
-          VISUAL SENSOR
+          视觉传感器
         </button>
       </div>
 
@@ -100,10 +100,10 @@ export default function DataUploadPanel({ onUpload, onCameraRequest, onError }: 
           </div>
           
           <h3 className="font-orbitron text-xl text-white tracking-widest mb-2">
-            UPLOAD SOURCE MATERIAL
+            上传源素材
           </h3>
           <p className="text-cyan-600 text-xs font-mono mb-8">
-            SUPPORTED FORMATS: JPG, PNG, WEBP
+            支持格式: JPG, PNG, WEBP
           </p>
 
           <input
@@ -118,7 +118,7 @@ export default function DataUploadPanel({ onUpload, onCameraRequest, onError }: 
             onClick={() => fileInputRef.current?.click()}
             className="cyber-button group"
           >
-            <span className="relative z-10">SELECT DATA FILE</span>
+            <span className="relative z-10">选择数据文件</span>
             <div className="absolute inset-0 bg-cyan-400/10 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
           </button>
         </div>

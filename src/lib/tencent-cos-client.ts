@@ -4,9 +4,9 @@
 
 import COS from 'cos-nodejs-sdk-v5'
 
-let cosClient: COS | null = null
+let cosClient: any | null = null
 
-function getCOSClient(): COS {
+function getCOSClient(): any {
   if (!cosClient) {
     const secretId = process.env.TENCENT_COS_SECRET_ID!
     const secretKey = process.env.TENCENT_COS_SECRET_KEY!
@@ -46,7 +46,7 @@ export async function uploadToTencentCOS(
         ContentType: contentType,
         CacheControl: 'public, max-age=31536000',
       },
-      (err, data) => {
+      (err: any, data: any) => {
         if (err) {
           console.error('腾讯云 COS 上传失败:', err)
           reject(new Error(`腾讯云 COS 上传失败: ${err.message}`))

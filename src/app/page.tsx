@@ -26,16 +26,16 @@ export default function HomePage() {
     setStep('analysis')
   }
 
-  const handleProcessData = async () => {
+  const handleProcessData = async (styleIndex: number) => {
     setIsProcessing(true)
     try {
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ image: sourceImage }),
+        body: JSON.stringify({ image: sourceImage, styleIndex }),
       })
 
-      if (!response.ok) throw new Error('System Malfunction')
+      if (!response.ok) throw new Error('系统故障')
       
       const data = await response.json()
       if (data.success && data.imageUrl) {
@@ -44,7 +44,7 @@ export default function HomePage() {
       }
     } catch (error) {
       console.error(error)
-      alert('NEURAL BRIDGE DISCONNECTED')
+      alert('神经桥接已断开')
     } finally {
       setIsProcessing(false)
     }
@@ -56,7 +56,7 @@ export default function HomePage() {
       
       <div className="flex-1 flex flex-col items-center justify-center p-6 relative">
         {/* Main Content Area */}
-        <div className="w-full max-w-7xl relative z-10">
+        <div className="w-full container mx-auto max-w-[1920px] relative z-10">
           {step === 'input' && (
             <div className="animate-in fade-in zoom-in duration-500">
               <DataUploadPanel 

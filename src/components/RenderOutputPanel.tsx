@@ -22,7 +22,7 @@ export default function RenderOutputPanel({
       const proxyUrl = `/api/proxy-image?url=${encodeURIComponent(resultImage)}`
       const response = await fetch(proxyUrl)
       
-      if (!response.ok) throw new Error('Download failed')
+      if (!response.ok) throw new Error('下载失败')
       
       const blob = await response.blob()
       const url = window.URL.createObjectURL(blob)
@@ -41,13 +41,13 @@ export default function RenderOutputPanel({
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto space-y-6">
+    <div className="w-full max-w-[1920px] mx-auto space-y-6">
       {/* Main Display */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Input Source */}
         <div className="relative border border-cyan-900/30 bg-[#02040a]">
           <div className="absolute top-0 left-0 px-3 py-1 bg-cyan-950/50 text-[10px] text-cyan-600 font-mono tracking-widest border-b border-r border-cyan-900/30 z-10">
-            INPUT_SOURCE_01
+            输入源_01
           </div>
           <div className="relative aspect-[4/3] w-full grayscale opacity-60">
             <Image
@@ -66,7 +66,7 @@ export default function RenderOutputPanel({
         <div className="relative border border-cyan-500/50 bg-[#02040a] shadow-[0_0_20px_rgba(0,240,255,0.1)]">
           <div className="absolute top-0 right-0 w-2 h-2 bg-cyan-400 animate-pulse z-20" />
           <div className="absolute top-0 left-0 px-3 py-1 bg-cyan-900/50 text-[10px] text-cyan-300 font-mono tracking-widest border-b border-r border-cyan-500/30 z-10">
-            RENDER_OUTPUT_FINAL
+            最终渲染输出
           </div>
           <div className="relative aspect-[4/3] w-full">
             <Image
@@ -90,8 +90,8 @@ export default function RenderOutputPanel({
             <QRCodeSVG value={resultImage} size={64} />
           </div>
           <div className="flex flex-col">
-            <span className="font-orbitron text-xs text-white tracking-wider">MOBILE LINK</span>
-            <span className="font-mono text-[10px] text-cyan-600">SECURE_TRANSFER_PROTOCOL</span>
+            <span className="font-orbitron text-xs text-white tracking-wider">移动端链接</span>
+            <span className="font-mono text-[10px] text-cyan-600">安全传输协议</span>
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export default function RenderOutputPanel({
             onClick={onReset}
             className="flex-1 md:flex-none px-6 py-3 font-orbitron text-sm text-cyan-600 hover:text-white border border-transparent hover:border-cyan-700 transition-all uppercase tracking-wider"
           >
-            RESET SYSTEM
+            重置系统
           </button>
           
           <button
@@ -109,7 +109,7 @@ export default function RenderOutputPanel({
             className="flex-1 md:flex-none relative group px-8 py-3 bg-cyan-950/30 border border-cyan-500/50 text-cyan-300 font-orbitron text-sm tracking-wider uppercase hover:bg-cyan-500/20 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all flex items-center justify-center gap-2"
           >
             <Download size={16} />
-            DOWNLOAD ASSET
+            下载资产
             <div className="absolute bottom-0 right-0 w-2 h-2 bg-cyan-400" />
           </button>
         </div>

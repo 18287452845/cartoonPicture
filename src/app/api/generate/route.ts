@@ -6,7 +6,7 @@ import type { GenerateResponse } from '@/types'
 
 export async function POST(request: NextRequest) {
   try {
-    const { image } = await request.json()
+    const { image, styleIndex = 0 } = await request.json()
 
     if (!image) {
       return NextResponse.json(
@@ -15,13 +15,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    console.log('收到生成请求，图片格式: base64')
+    console.log('收到生成请求，图片格式: base64, 风格索引:', styleIndex)
 
     // 先尝试使用 base64 直接调用阿里云 API
     let generatedImageUrl: string
     try {
       console.log('尝试使用 base64 直接调用阿里云 API')
-      generatedImageUrl = await generateCartoonImage(image)
+      generatedImageUrl = await generateCartoonImage(image, styleIndex)
     } catch (error) {
       // 如果 base64 失败，临时上传到 R2 获取 URL 后重试
       console.warn('Base64 调用失败，尝试上传到 R2 后使用 URL:', error)
@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
       }
       
       // 使用公开 URL 重试
-      generatedImageUrl = await generateCartoonImage(publicUrl)
+      generatedImageUrl = await generateCartoonImage(publicUrl, styleIndex)
     }
 
     // 将生成的图片从阿里云下载并转存到 R2

@@ -44,14 +44,14 @@ export default function VisualSensor({ onCapture, onClose }: VisualSensorProps) 
 
         {/* Status Text */}
         <div className="absolute top-10 left-1/2 -translate-x-1/2 text-cyan-400 font-mono text-xs tracking-[0.3em] bg-black/50 px-4 py-1">
-          VISUAL_SENSOR_ACTIVE
+          视觉传感器已激活
         </div>
         
         {/* Data Overlay */}
         <div className="absolute bottom-10 left-10 text-cyan-600 font-mono text-[10px] space-y-1">
-          <div>ISO: AUTO</div>
-          <div>EXP: +0.0</div>
-          <div>W/B: 5600K</div>
+          <div>感光度: 自动</div>
+          <div>曝光: +0.0</div>
+          <div>白平衡: 5600K</div>
         </div>
       </div>
 
